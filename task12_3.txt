@@ -1,0 +1,144 @@
+root@ip-172-31-36-78:~# mv /lib/systemd/system  new
+root@ip-172-31-36-78:~# ls
+new  snap
+root@ip-172-31-36-78:~# new
+
+Command 'new' not found, but can be installed with:
+
+apt install mmh  # version 0.4-2, or
+apt install nmh  # version 1.7.1-6
+
+root@ip-172-31-36-78:~# apt install mmh
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+E: Unable to locate package mmh
+root@ip-172-31-36-78:~# cd new
+root@ip-172-31-36-78:~/new# ls
+system
+root@ip-172-31-36-78:~/new# cd system
+root@ip-172-31-36-78:~/new/system# ls
+ accounts-daemon.service                  lvm2-monitor.service                     ssh.service
+ acpid.path                               lvm2-pvscan@.service                     ssh.service.d
+ acpid.service                            lvm2.service                             ssh.socket
+ acpid.socket                             lxd-agent-9p.service                     ssh@.service
+ apache-htcacheclean.service              lxd-agent.service                        sudo.service
+ apache-htcacheclean@.service             machine.slice                            suspend-then-hibernate.target
+ apache2.service                          man-db.service                           suspend.target
+ apache2@.service                         man-db.timer                             swap.target
+ apparmor.service                         mdadm-grow-continue@.service             sys-fs-fuse-connections.mount
+ apport-autoreport.path                   mdadm-last-resort@.service               sys-kernel-config.mount
+ apport-autoreport.service                mdadm-last-resort@.timer                 sys-kernel-debug.mount
+ apport-forward.socket                    mdcheck_continue.service                 sys-kernel-tracing.mount
+ apport-forward@.service                  mdcheck_continue.timer                   sysinit.target
+ apt-daily-upgrade.service                mdcheck_start.service                    sysinit.target.wants
+ apt-daily-upgrade.timer                  mdcheck_start.timer                      syslog.socket
+ apt-daily.service                        mdmon@.service                          'system-systemd\x2dcryptsetup.slice'
+ apt-daily.timer                          mdmonitor-oneshot.service                system-update-cleanup.service
+ atd.service                              mdmonitor-oneshot.timer                  system-update-pre.target
+ autovt@.service                          mdmonitor.service                        system-update.target
+ basic.target                             modprobe@.service                        system-update.target.wants
+ blk-availability.service                 motd-news.service                        systemd-ask-password-console.path
+ blockdev@.target                         motd-news.timer                          systemd-ask-password-console.service
+ bluetooth.target                         multi-user.target                        systemd-ask-password-plymouth.path
+ bolt.service                             multi-user.target.wants                  systemd-ask-password-plymouth.service
+ boot-complete.target                     multipath-tools-boot.service             systemd-ask-password-wall.path
+ cloud-config.service                     multipath-tools.service                  systemd-ask-password-wall.service
+ cloud-config.target                      multipathd.service                       systemd-backlight@.service
+ cloud-final.service                      multipathd.socket                        systemd-binfmt.service
+ cloud-init-local.service                 network-online.target                    systemd-bless-boot.service
+ cloud-init.service                       network-pre.target                       systemd-boot-check-no-failures.service
+ cloud-init.target                        network.target                           systemd-boot-system-token.service
+ console-getty.service                    networkd-dispatcher.service              systemd-exit.service
+ console-setup.service                    nss-lookup.target                        systemd-fsck-root.service
+ container-getty@.service                 nss-user-lookup.target                   systemd-fsck@.service
+ cron.service                             ondemand.service                         systemd-fsckd.service
+ cryptdisks-early.service                 open-iscsi.service                       systemd-fsckd.socket
+ cryptdisks.service                       open-vm-tools.service                    systemd-halt.service
+ cryptsetup-pre.target                    packagekit-offline-update.service        systemd-hibernate-resume@.service
+ cryptsetup.target                        packagekit.service                       systemd-hibernate.service
+ ctrl-alt-del.target                      paths.target                             systemd-hostnamed.service
+ dbus-org.freedesktop.hostname1.service   plymouth-halt.service                    systemd-hwdb-update.service
+ dbus-org.freedesktop.locale1.service     plymouth-kexec.service                   systemd-hybrid-sleep.service
+ dbus-org.freedesktop.login1.service      plymouth-log.service                     systemd-initctl.service
+ dbus-org.freedesktop.timedate1.service   plymouth-poweroff.service                systemd-initctl.socket
+ dbus.service                             plymouth-quit-wait.service               systemd-journal-flush.service
+ dbus.socket                              plymouth-quit.service                    systemd-journald-audit.socket
+ debug-shell.service                      plymouth-read-write.service              systemd-journald-dev-log.socket
+ default.target                           plymouth-reboot.service                  systemd-journald-varlink@.socket
+ dev-hugepages.mount                      plymouth-start.service                   systemd-journald.service
+ dev-mqueue.mount                         plymouth-switch-root.service             systemd-journald.socket
+ dm-event.service                         plymouth.service                         systemd-journald@.service
+ dm-event.socket                          polkit.service                           systemd-journald@.socket
+ dmesg.service                            pollinate.service                        systemd-kexec.service
+ e2scrub@.service                         poweroff.target                          systemd-localed.service
+ e2scrub_all.service                      poweroff.target.wants                    systemd-logind.service
+ e2scrub_all.timer                        printer.target                           systemd-machine-id-commit.service
+ e2scrub_fail@.service                    proc-sys-fs-binfmt_misc.automount        systemd-modules-load.service
+ e2scrub_reap.service                     proc-sys-fs-binfmt_misc.mount            systemd-network-generator.service
+ ec2-instance-connect.service             procps.service                           systemd-networkd-wait-online.service
+ emergency.service                        quotaon.service                          systemd-networkd.service
+ emergency.target                         rc-local.service                         systemd-networkd.socket
+ exit.target                              rc-local.service.d                       systemd-poweroff.service
+ final.target                             rc.service                               systemd-pstore.service
+ finalrd.service                          rcS.service                              systemd-quotacheck.service
+ friendly-recovery.service                reboot.target                            systemd-random-seed.service
+ friendly-recovery.target                 reboot.target.wants                      systemd-reboot.service
+ fstrim.service                           remote-cryptsetup.target                 systemd-remount-fs.service
+ fstrim.timer                             remote-fs-pre.target                     systemd-resolved.service
+ fwupd-offline-update.service             remote-fs.target                         systemd-rfkill.service
+ fwupd-refresh.service                    rescue-ssh.target                        systemd-rfkill.socket
+ fwupd-refresh.timer                      rescue.service                           systemd-suspend-then-hibernate.service
+ fwupd.service                            rescue.target                            systemd-suspend.service
+ getty-pre.target                         rescue.target.wants                      systemd-sysctl.service
+ getty-static.service                     rpcbind.target                           systemd-sysusers.service
+ getty.target                             rsync.service                            systemd-time-wait-sync.service
+ getty.target.wants                       rsyslog.service                          systemd-timedated.service
+ getty@.service                           runlevel0.target                         systemd-timesyncd.service
+ graphical.target                         runlevel1.target                         systemd-tmpfiles-clean.service
+ graphical.target.wants                   runlevel1.target.wants                   systemd-tmpfiles-clean.timer
+ grub-initrd-fallback.service             runlevel2.target                         systemd-tmpfiles-setup-dev.service
+ halt.target                              runlevel2.target.wants                   systemd-tmpfiles-setup.service
+ halt.target.wants                        runlevel3.target                         systemd-udev-settle.service
+ hibernate.target                         runlevel3.target.wants                   systemd-udev-trigger.service
+ hibinit-agent.service                    runlevel4.target                         systemd-udevd-control.socket
+ hwclock.service                          runlevel4.target.wants                   systemd-udevd-kernel.socket
+ hybrid-sleep.target                      runlevel5.target                         systemd-udevd.service
+ initrd-cleanup.service                   runlevel5.target.wants                   systemd-update-utmp-runlevel.service
+ initrd-fs.target                         runlevel6.target                         systemd-update-utmp.service
+ initrd-parse-etc.service                 screen-cleanup.service                   systemd-user-sessions.service
+ initrd-root-device.target                secureboot-db.service                    systemd-volatile-root.service
+ initrd-root-fs.target                    serial-getty@.service                    time-set.target
+ initrd-switch-root.service               setvtrgb.service                         time-sync.target
+ initrd-switch-root.target                shutdown.target                          timers.target
+ initrd-switch-root.target.wants          sigpwr.target                            timers.target.wants
+ initrd-udevadm-cleanup-db.service        sleep.target                             udev.service
+ initrd.target                            slices.target                            ufw.service
+ irqbalance.service                       smartcard.target                         umount.target
+ iscsid.service                           snapd.apparmor.service                   unattended-upgrades.service
+ iscsid.socket                            snapd.autoimport.service                 user-.slice.d
+ kexec.target                             snapd.core-fixup.service                 user-runtime-dir@.service
+ kexec.target.wants                       snapd.failure.service                    user.slice
+ keyboard-setup.service                   snapd.recovery-chooser-trigger.service   user@.service
+ kmod-static-nodes.service                snapd.seeded.service                     user@.service.d
+ kmod.service                             snapd.service                            uuidd.service
+ local-fs-pre.target                      snapd.snap-repair.service                uuidd.socket
+ local-fs.target                          snapd.snap-repair.timer                  vgauth.service
+ local-fs.target.wants                    snapd.socket                             x11-common.service
+ logrotate.service                        snapd.system-shutdown.service            xfs_scrub@.service
+ logrotate.timer                          sockets.target                           xfs_scrub_all.service
+ lvm2-lvmpolld.service                    sockets.target.wants                     xfs_scrub_all.timer
+ lvm2-lvmpolld.socket                     sound.target                             xfs_scrub_fail@.service
+root@ip-172-31-36-78:~/new/system# lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0     7:0    0 33.3M  1 loop /snap/amazon-ssm-agent/3552
+loop1     7:1    0 55.5M  1 loop /snap/core18/1997
+loop2     7:2    0 70.4M  1 loop /snap/lxd/19647
+loop3     7:3    0 32.3M  1 loop /snap/snapd/11588
+xvda    202:0    0    8G  0 disk 
+└─xvda1 202:1    0    8G  0 part /
+xvdf    202:80   0    1G  0 disk 
+├─xvdf1 202:81   0   20M  0 part 
+└─xvdf2 202:82   0  140M  0 part 
+root@ip-172-31-36-78:~/new/system# 
+

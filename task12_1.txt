@@ -1,0 +1,115 @@
+root@ip-172-31-45-167:~# fdisk -l /dev/xvdf
+Disk /dev/xvdf: 1 GiB, 1073741824 bytes, 2097152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+root@ip-172-31-45-167:~# fdisk /dev/xvdf
+
+Welcome to fdisk (util-linux 2.34).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0x139d0c3c.
+
+Command (m for help): p
+Disk /dev/xvdf: 1 GiB, 1073741824 bytes, 2097152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x139d0c3c
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): 
+
+Using default response p.
+Partition number (1-4, default 1):   
+First sector (2048-2097151, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-2097151, default 2097151): +20M
+
+Created a new partition 1 of type 'Linux' and of size 20 MiB.
+
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): 
+
+Using default response p.
+Partition number (2-4, default 2): 
+First sector (43008-2097151, default 43008): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (43008-2097151, default 2097151): +140M
+
+Created a new partition 2 of type 'Linux' and of size 140 MiB.
+
+Command (m for help): p
+Disk /dev/xvdf: 1 GiB, 1073741824 bytes, 2097152 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x139d0c3c
+
+Device     Boot Start    End Sectors  Size Id Type
+/dev/xvdf1       2048  43007   40960   20M 83 Linux
+/dev/xvdf2      43008 329727  286720  140M 83 Linux
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+root@ip-172-31-45-167:~# lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0     7:0    0 33.3M  1 loop /snap/amazon-ssm-agent/3552
+loop1     7:1    0 55.5M  1 loop /snap/core18/1997
+loop2     7:2    0 70.4M  1 loop /snap/lxd/19647
+loop3     7:3    0 32.3M  1 loop /snap/snapd/11588
+xvda    202:0    0    8G  0 disk 
+└─xvda1 202:1    0    8G  0 part /
+xvdf    202:80   0    1G  0 disk 
+├─xvdf1 202:81   0   20M  0 part 
+└─xvdf2 202:82   0  140M  0 part 
+root@ip-172-31-45-167:~# mkfs.
+mkfs.bfs     mkfs.cramfs  mkfs.ext3    mkfs.fat     mkfs.msdos   mkfs.vfat    
+mkfs.btrfs   mkfs.ext2    mkfs.ext4    mkfs.minix   mkfs.ntfs    mkfs.xfs     
+root@ip-172-31-45-167:~# mkfs.xfs /dev/xvdf2
+meta-data=/dev/xvdf2             isize=512    agcount=4, agsize=8960 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1
+data     =                       bsize=4096   blocks=35840, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=1368, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+root@ip-172-31-45-167:~# lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0     7:0    0 33.3M  1 loop /snap/amazon-ssm-agent/3552
+loop1     7:1    0 55.5M  1 loop /snap/core18/1997
+loop2     7:2    0 70.4M  1 loop /snap/lxd/19647
+loop3     7:3    0 32.3M  1 loop /snap/snapd/11588
+xvda    202:0    0    8G  0 disk 
+└─xvda1 202:1    0    8G  0 part /
+xvdf    202:80   0    1G  0 disk 
+├─xvdf1 202:81   0   20M  0 part 
+└─xvdf2 202:82   0  140M  0 part 
+root@ip-172-31-45-167:~# mount /dev/xvdf2 welcome/
+root@ip-172-31-45-167:~# lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0     7:0    0 33.3M  1 loop /snap/amazon-ssm-agent/3552
+loop1     7:1    0 55.5M  1 loop /snap/core18/1997
+loop2     7:2    0 70.4M  1 loop /snap/lxd/19647
+loop3     7:3    0 32.3M  1 loop /snap/snapd/11588
+xvda    202:0    0    8G  0 disk 
+└─xvda1 202:1    0    8G  0 part /
+xvdf    202:80   0    1G  0 disk 
+├─xvdf1 202:81   0   20M  0 part 
+└─xvdf2 202:82   0  140M  0 part /root/welcome
+root@ip-172-31-45-167:~# 
+
